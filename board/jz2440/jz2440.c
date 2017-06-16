@@ -326,6 +326,13 @@ int board_init (void)
 
 }
 
+int board_eth_init(bd_t * bis) {
+
+	//dm9000_initialize(bis);
+
+	return 0;
+}
+
 int dram_init (void)
 {
 	gd->bd->bi_dram[0].start = PHYS_SDRAM_1;

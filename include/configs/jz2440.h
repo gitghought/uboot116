@@ -53,9 +53,18 @@
 /*
  * Hardware drivers
  */
-#define CONFIG_DRIVER_CS8900	1	/* we have a CS8900 on-board */
-#define CS8900_BASE		0x19000300
-#define CS8900_BUS16		1 /* the Linux driver does accesses as shorts */
+//#define CONFIG_DRIVER_CS8900	1	/* we have a CS8900 on-board */
+//#define CS8900_BASE		0x19000300
+//#define CS8900_BUS16		1 /* the Linux driver does accesses as shorts */
+
+#define CONFIG_DRIVER_DM9000       1
+#define CONFIG_DM9000_BASE      0x20000000
+#define DM9000_IO            CONFIG_DM9000_BASE
+#define DM9000_DATA         (CONFIG_DM9000_BASE + 4)
+#define CONFIG_DM9000_USE_16BIT
+
+//#define CONFIG_CMD_NET 1
+//#define CONFIG_NET_MULTI 1
 
 /*
  * select serial console configuration

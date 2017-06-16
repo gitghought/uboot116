@@ -456,6 +456,17 @@ extern ushort getenv_VLAN(char *);
 /* copy a filename (allow for "..." notation, limit length) */
 extern void	copy_filename (char *dst, char *src, int size);
 
+static inline int is_zero_ether_addr(const u8 *addr)
+{
+		return !(addr[0] | addr[1] | addr[2] | addr[3] | addr[4] | addr[5]);
+}
+
+static inline int is_multicast_ether_addr(const u8 *addr)
+{
+		return (0x01 & addr[0]);
+}
+
+
 /**********************************************************************/
 
 #endif /* __NET_H__ */
