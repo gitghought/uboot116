@@ -93,6 +93,11 @@ static inline S3C24X0_LCD * const S3C24X0_GetBase_LCD(void)
 {
 	return (S3C24X0_LCD * const)S3C24X0_LCD_BASE;
 }
+static inline S3C2440_NAND * const S3C2440_GetBase_NAND(void)
+{
+	return (S3C2440_NAND * const)S3C2410_NAND_BASE;
+}
+
 static inline S3C2410_NAND * const S3C2410_GetBase_NAND(void)
 {
 	return (S3C2410_NAND * const)S3C2410_NAND_BASE;
@@ -219,9 +224,53 @@ static inline S3C2410_SDI * const S3C2410_GetBase_SDI(void)
 #define BIT_ALLMSK		(0xFFFFFFFF)
 
 #define ClearPending(bit) {\
-		 rSRCPND = bit;\
-		 rINTPND = bit;\
-		 rINTPND;\
-		 }
+	rSRCPND = bit;\
+	rINTPND = bit;\
+	rINTPND;\
+}
 /* Wait until rINTPND is changed for the case that the ISR is very short. */
+
+#define isS3C2410 		((rGSTATUS1 & 0xffff0000) == 0x32410000)
+#define rGPBCON         (*(volatile unsigned *)0x56000010)
+#define rGPBDAT         (*(volatile unsigned *)0x56000014)
+#define rGPBUP          (*(volatile unsigned *)0x56000018)
+
+#define rGPCCON         (*(volatile unsigned *)0x56000020)
+#define rGPCDAT         (*(volatile unsigned *)0x56000024)
+#define rGPCUP          (*(volatile unsigned *)0x56000028)
+
+#define rGPDCON         (*(volatile unsigned *)0x56000030)
+#define rGPDDAT         (*(volatile unsigned *)0x56000034)
+#define rGPDUP          (*(volatile unsigned *)0x56000038)
+
+#define rGPECON         (*(volatile unsigned *)0x56000040)
+#define rGPEDAT         (*(volatile unsigned *)0x56000044)
+#define rGPEUP          (*(volatile unsigned *)0x56000048)
+
+#define rGPFCON         (*(volatile unsigned *)0x56000050)
+#define rGPFDAT         (*(volatile unsigned *)0x56000054)
+#define rGPFUP          (*(volatile unsigned *)0x56000058)
+
+#define rGPGCON         (*(volatile unsigned *)0x56000060)
+#define rGPGDAT         (*(volatile unsigned *)0x56000064)
+#define rGPGUP          (*(volatile unsigned *)0x56000068)
+
+#define rGPHCON         (*(volatile unsigned *)0x56000070)
+#define rGPHDAT         (*(volatile unsigned *)0x56000074)
+#define rGPHUP          (*(volatile unsigned *)0x56000078)
+
+#define rMISCCR         (*(volatile unsigned *)0x56000080)
+#define rDCLKCON        (*(volatile unsigned *)0x56000084)
+#define rEXTINT0        (*(volatile unsigned *)0x56000088)
+#define rEXTINT1        (*(volatile unsigned *)0x5600008C)
+#define rEXTINT2        (*(volatile unsigned *)0x56000090)
+#define rEINTFLT0       (*(volatile unsigned *)0x56000094)
+#define rEINTFLT1       (*(volatile unsigned *)0x56000098)
+#define rEINTFLT2       (*(volatile unsigned *)0x5600009C)
+#define rEINTFLT3       (*(volatile unsigned *)0x560000A0)
+#define rEINTMASK       (*(volatile unsigned *)0x560000A4)
+#define rEINTPEND       (*(volatile unsigned *)0x560000A8)
+#define rGSTATUS0       (*(volatile unsigned *)0x560000AC)
+#define rGSTATUS1       (*(volatile unsigned *)0x560000B0)
+
 #endif /*__S3C2410_H__*/

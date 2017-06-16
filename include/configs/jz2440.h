@@ -63,9 +63,6 @@
 #define DM9000_DATA         (CONFIG_DM9000_BASE + 4)
 #define CONFIG_DM9000_USE_16BIT
 
-//#define CONFIG_CMD_NET 1
-//#define CONFIG_NET_MULTI 1
-
 /*
  * select serial console configuration
  */
@@ -87,7 +84,7 @@
 #define CONFIG_COMMANDS \
 			(CONFIG_CMD_DFL	 | \
 			CFG_CMD_CACHE	 | \
-			/*CFG_CMD_NAND	 |*/ \
+			CFG_CMD_NAND	 | \
 			/*CFG_CMD_EEPROM |*/ \
 			/*CFG_CMD_I2C	 |*/ \
 			/*CFG_CMD_USB	 |*/ \
@@ -191,9 +188,8 @@
 
 /*config nand*/
 #define CFG_NAND_BASE        0      //无实际意义：基地址，在board_nand_init中重新定义
-
 #define CFG_MAX_NAND_DEVICE     1   //NAND Flash设备数目为1
-
 #define NAND_MAX_CHIPS          1  
+
 
 #endif	/* __CONFIG_H */
